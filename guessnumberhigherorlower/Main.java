@@ -5,12 +5,14 @@ public class Main {
         Solution sol3 = new Solution(1);
         Solution sol4 = new Solution(32);
         Solution sol5 = new Solution(1256);
+        Solution sol6 = new Solution(1702766719);
 
         System.out.println(sol1.guessNumber(10));
         System.out.println(sol2.guessNumber(1));
         System.out.println(sol3.guessNumber(2));
         System.out.println(sol4.guessNumber(100));
         System.out.println(sol5.guessNumber(10000));
+        System.out.println(sol6.guessNumber(2126753390));
 
     }
 } 

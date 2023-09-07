@@ -10,7 +10,7 @@ public class Solution extends GuessGame {
     }
     
     public int binarySearch(int start, int end) {
-        int val = (start + end) / 2;
+        int val = start + (end - start) / 2;
         int guessVal = guess(val);
         if (guessVal == 0)
             return val;
