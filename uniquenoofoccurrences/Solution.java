@@ -1,4 +1,5 @@
 public class Solution {
-public boolean uniqueOccurrences(int[] arr) {
-}
+    public boolean uniqueOccurrences(int[] arr) {
+        return false;
+    }
 } 
