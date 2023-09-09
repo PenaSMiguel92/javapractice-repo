@@ -1,4 +1,5 @@
 public class Solution {
-public int largestAltitude(int[] gain) {
-}
+    public int largestAltitude(int[] gain) {
+    
+    }
 }
