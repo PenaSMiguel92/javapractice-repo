@@ -4,5 +4,6 @@ public class Main {
         System.out.println(sol.gcdOfStrings("ABCABC", "ABC"));
         System.out.println(sol.gcdOfStrings("ABABAB", "ABAB"));
         System.out.println(sol.gcdOfStrings("LEET", "CODE"));
+        System.out.println(sol.gcdOfStrings("TAUXXTAUXXTAUXXTAUXXTAUXX", "TAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXXTAUXX"));
     }
 }
