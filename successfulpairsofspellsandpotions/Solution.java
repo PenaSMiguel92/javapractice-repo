@@ -3,19 +3,20 @@ import java.util.*;
 public class Solution {
     public int[] successfulPairs(int[] spells, int[] potions, long success) {
         Arrays.sort(potions);
-        List<Integer> answer = new LinkedList<>();
+        int[] answer = new int[spells.length];
         int m = potions.length;
         int maxPotion = potions[m - 1];
 
-        for (int spell : spells) {
+        for (int i = 0; i < spells.length; i++) {
+            int spell = spells[i];
             int minPotion = (int) Math.ceil((double) success / spell);
             if (minPotion > maxPotion)
-                answer.add(0);
+                answer[i] = 0;
             else 
-                answer.add(m - lower_bound(potions, minPotion));
+                answer[i] = (m - lower_bound(potions, minPotion));
         }
 
-        return answer.stream().mapToInt(Integer::intValue).toArray();
+        return answer;
     }
     
     public int lower_bound(int[] potions, int minPotion) {
