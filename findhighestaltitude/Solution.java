@@ -7,6 +7,8 @@ public class Solution {
                 maxAltitude = currentAltitude;
             currentAltitude += g;
         }
+        if (currentAltitude > maxAltitude)
+            maxAltitude = currentAltitude;
         return maxAltitude;
     }
 }
