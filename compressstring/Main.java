@@ -10,17 +10,17 @@ public class Main {
 
         System.out.println("Case 1: ");
         for (int i = 0; i < ans1; i++)
-            System.out.print(ca1[ans1]);
+            System.out.print(ca1[i]);
 
         System.out.print("\n");
         System.out.println("Case 2: ");
         for (int i = 0; i < ans2; i++)
-            System.out.print(ca2[ans2]);
+            System.out.print(ca2[i]);
         
         System.out.print("\n");
         System.out.println("Case 3: ");
         for (int i = 0; i < ans3; i++)
-            System.out.print(ca3[ans3]);
+            System.out.print(ca3[i]);
 
         System.out.print("\n");
     }
