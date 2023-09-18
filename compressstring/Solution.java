@@ -1,4 +1,5 @@
 public class Solution {
-public int compress(char[] chars) {
-}
+    public int compress(char[] chars) {
+    
+    }
 }
