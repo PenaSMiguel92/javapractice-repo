@@ -1,33 +1,27 @@
 public class Solution {
     public int compress(char[] chars) {
-        if (chars.length < 2)
-            return chars.length;
-            
+        int length = chars.length;
+        if (length == 1)
+            return 1;
+
         int index = 0;
         int result = 0;
-        int groupLength = 0;
-        for (int i = 0; i < chars.length; i++) {
+        while (index < length) {
             
-            if ((chars[index] != chars[i]) || (i == chars.length - 1)) {
-                groupLength = ((chars[index] == chars[i]) && (i == chars.length - 1)) ? groupLength + 1 : groupLength;
-                chars[result++] = chars[index];
-                if (groupLength > 1 && groupLength < 10)
-                    chars[result++] = (char) ('0' + groupLength);
-                else if (groupLength > 9)
-                    for (char c : Integer.toString(groupLength).toCharArray())
-                        chars[result++] = c;
-                
-                
-
-                groupLength = 1;
-                index = i;
-            } else {
+            int groupLength = 1;
+            char charVal = chars[index];
+            while (index + 1 < length && chars[index] == chars[index + 1]) {
                 groupLength++;
+                index++;
             }
-
-            if ((index > 1) && (chars[index-1] != chars[i]) && (i == chars.length - 1) && (groupLength == 1)) 
-                    chars[result++] = chars[i];
-            
+            if (groupLength == 1) {
+                chars[result++] = charVal;
+            } else if (groupLength > 1) {
+                chars[result++] = charVal;
+                for (char c : Integer.toString(groupLength).toCharArray())
+                    chars[result++] = c;
+            }
+            index++;
         }
         
         return result;
