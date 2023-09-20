@@ -1,4 +1,5 @@
 public class Solution {
-public String removeStars(String s) {
-}
+    public String removeStars(String s) {
+        return "";
+    }
 } 
