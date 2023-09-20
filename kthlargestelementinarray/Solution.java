@@ -1,19 +1,18 @@
 import java.util.Queue;
 import java.util.PriorityQueue;
+import java.util.Arrays;
 
 public class Solution {
     public int findKthLargest(int[] nums, int k) {
-        Queue<Integer> numsQueue = new PriorityQueue<>((a,b) -> {
+        Queue<Integer> numsQueue = new PriorityQueue<>(nums.length, (a,b) -> {
             if (a < b)
                 return 1;
-            else if (a > b)
+            if (a > b)
                 return -1;
-            else
-                return 0;
+            
+            return 0;
         });
-        for (int num : nums) {
-            numsQueue.add(num);
-        }
+        numsQueue.addAll(Arrays.stream(nums).boxed().toList());
         for (int i = 0; i < k-1; i++) {
             numsQueue.poll();
         }
