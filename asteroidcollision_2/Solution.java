@@ -1,29 +1,43 @@
-import java.util.Deque;
-import java.util.ArrayDeque;
+import java.util.Stack;
 
 public class Solution {
     public int[] asteroidCollision(int[] asteroids) {
-        Deque<Integer> asteroidDeque = new ArrayDeque<>();
-        asteroidDeque.offer(asteroids[0]);
-        for (int i = 1; i < asteroids.length; i++) {
+        if (asteroids.length < 2)
+            return asteroids;
+
+        Stack<Integer> asteroidStack = new Stack<>();
+        for (int i = 0; i < asteroids.length; i++) {
             int curVal = asteroids[i];
             if (curVal > 0) {
-                asteroidDeque.offer(curVal);
+                asteroidStack.push(curVal);
                 continue;
             }
-
-            int last = asteroidDeque.peek();
-            if (last > 0 && Math.abs(last) <= Math.abs(curVal)) {
-                asteroidDeque.pop();
-                asteroidDeque.push(curVal);
-            } else
-                asteroidDeque.push(curVal);
+            boolean survived = true;
+            while (asteroidStack.size() > 0) {
+                int last = asteroidStack.peek();
+                if (last < 0)
+                    break;
+                if (Math.abs(last) < Math.abs(curVal)) {
+                    asteroidStack.pop();
+                } else if (Math.abs(last) > Math.abs(curVal)) {
+                    survived = false;
+                    break;
+                } else {
+                    asteroidStack.pop();
+                    survived = false;
+                    break;
+                }
+            }
+            if (survived)
+                asteroidStack.push(curVal);
+            
         }
-        int n = asteroidDeque.size();
+
+        int n = asteroidStack.size();
         int[] ans = new int[n];
         for (int i = n - 1; i >= 0; i--)
-            ans[i] = asteroidDeque.pop();
-            
+            ans[i] = asteroidStack.pop();
+
         return ans;
     }
 } 
