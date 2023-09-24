@@ -4,28 +4,23 @@ import java.util.Queue;
 import java.util.PriorityQueue;
 
 public class SmallestInfiniteSet {
-    Set<Integer> isPresent;
     Queue<Integer> addedIntegers;
-    int currentInteger = 1;
+    int currentInteger;
     public SmallestInfiniteSet() {
-        this.isPresent = new HashSet<Integer>();
-        this.addedIntegers = new PriorityQueue<>();
+        addedIntegers = new PriorityQueue<>();
+        currentInteger = 1;
     }
 
     public int popSmallest() {
-        if (this.addedIntegers.size() < 1)
-            return currentInteger++;
-
-        int answer = this.addedIntegers.poll();
-        this.isPresent.remove(answer);
-        return answer;
+        if (!addedIntegers.isEmpty())
+            return addedIntegers.poll();
+        
+        return currentInteger++;
     }
 
     public void addBack(int num) {
-        if (num >= currentInteger || this.isPresent.contains(num))
-            return;
-        
-        this.addedIntegers.offer(num);
-        this.isPresent.add(num);
+        if (num < currentInteger)
+            if (!addedIntegers.contains(num))
+                addedIntegers.add(num);
     }
 }
