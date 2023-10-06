@@ -27,4 +27,14 @@ public class ListNode {
         }
         return iterateOverList(current.next, val);
     }
+
+    public static ListNode generateListFromArray(int[] nums) {
+        ListNode head = new ListNode(-1, null);
+        ListNode curPointer = head;
+        for (int num : nums) {
+            curPointer.next = new ListNode(num);
+            curPointer = curPointer.next;
+        }
+        return head.next;
+    }
 }
